@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import GrainEffect from "@/components/visualEffects/grain-effect";
+import { Cursor } from "@/components/cursor/cursor";
 
 
 //Fonts
@@ -35,7 +36,7 @@ export default function RootLayout({
         )}
       >
         <GrainEffect />
-        
+        <Cursor color="#fff"/>
         {children}
       </body>
     </html>
