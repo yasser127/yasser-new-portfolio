@@ -1,20 +1,23 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Bricolage_Grotesque, Oswald } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
+import { cn } from "@/lib/utils";
+import GrainEffect from "@/components/visualEffects/grain-effect";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+
+//Fonts
+const MainFont = Bricolage_Grotesque({ subsets: ["latin"] });
+const OswaldFont = Oswald({ subsets: ["latin"], variable: "--font-oswald" });
+const PixelFont = localFont({
+  src: "../public/assets/fonts/pixel-font-7.ttf",
+  variable: "--font-pixel",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
+//Metadata
 export const metadata: Metadata = {
   title: "Yasser Jouni",
-  description: "Yasser Jouni portfolio",
+  description: "yasser Jouni portfolio",
 };
 
 export default function RootLayout({
@@ -25,8 +28,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={cn(
+          MainFont.className,
+          OswaldFont.variable,
+          PixelFont.variable
+        )}
       >
+        <GrainEffect />
+        
         {children}
       </body>
     </html>
